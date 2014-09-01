@@ -279,8 +279,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.persona',
     'allauth.socialaccount.providers.google',
-    #'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.github',
+    #'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.orcid',
     #'allauth.socialaccount.providers.linkedin',
     #'allauth.socialaccount.providers.weibo',
 
@@ -353,14 +354,14 @@ SOCIALACCOUNT_ADAPTER = 'biostar.server.middleware.AutoSignupAdapter'
 # Customize this to match the providers listed in the APPs
 SOCIALACCOUNT_PROVIDERS = {
 
-    'facebook': {
-        'SCOPE': ['email'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'METHOD': 'oauth2',
-        'LOCALE_FUNC': lambda x: 'en_US',
-        'PROVIDER_KEY': get_env("FACEBOOK_PROVIDER_KEY"),
-        'PROVIDER_SECRET_KEY': get_env("FACEBOOK_PROVIDER_SECRET_KEY"),
-    },
+    #'facebook': {
+    #    'SCOPE': ['email'],
+    #    'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+    #    'METHOD': 'oauth2',
+    #    'LOCALE_FUNC': lambda x: 'en_US',
+    #    'PROVIDER_KEY': get_env("FACEBOOK_PROVIDER_KEY"),
+    #    'PROVIDER_SECRET_KEY': get_env("FACEBOOK_PROVIDER_SECRET_KEY"),
+    #},
 
     'persona': {
         'REQUEST_PARAMETERS': {'siteName': 'Biostar'}
@@ -378,6 +379,11 @@ SOCIALACCOUNT_PROVIDERS = {
         'PROVIDER_KEY': get_env("GOOGLE_PROVIDER_KEY"),
         'PROVIDER_SECRET_KEY': get_env("GOOGLE_PROVIDER_SECRET_KEY"),
     },
+
+    #'orcid': {
+    #    'PROVIDER_KEY': get_env("ORCID_PROVIDER_KEY"),
+    #    'PROVIDER_SECRET_KEY': get_env("ORCID_PROVIDER_SECRET_KEY"),
+    #},
 }
 
 # The google id will injected as a template variable.
@@ -458,7 +464,6 @@ PAGINATE_BY = 25
 
 # Used by crispyforms.
 #CRISPY_FAIL_SILENTLY = not DEBUG
-
 
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
