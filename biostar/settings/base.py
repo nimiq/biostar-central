@@ -353,7 +353,6 @@ SOCIALACCOUNT_ADAPTER = 'biostar.server.middleware.AutoSignupAdapter'
 
 # Customize this to match the providers listed in the APPs
 SOCIALACCOUNT_PROVIDERS = {
-
     #'facebook': {
     #    'SCOPE': ['email'],
     #    'AUTH_PARAMS': {'auth_type': 'reauthenticate'},

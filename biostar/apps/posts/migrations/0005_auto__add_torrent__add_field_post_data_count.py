@@ -8,12 +8,6 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Deleting model 'Data'
-        db.delete_table(u'posts_data')
-
-        # Deleting model 'Foo'
-        db.delete_table(u'posts_foo')
-
         # Adding model 'Torrent'
         db.create_table(u'posts_torrent', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
@@ -41,23 +35,6 @@ class Migration(SchemaMigration):
 
 
     def backwards(self, orm):
-        # Adding model 'Data'
-        db.create_table(u'posts_data', (
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=80)),
-            ('file', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
-            ('post', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['posts.Post'])),
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('size', self.gf('django.db.models.fields.IntegerField')()),
-        ))
-        db.send_create_signal(u'posts', ['Data'])
-
-        # Adding model 'Foo'
-        db.create_table(u'posts_foo', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['users.User'])),
-        ))
-        db.send_create_signal(u'posts', ['Foo'])
-
         # Deleting model 'Torrent'
         db.delete_table(u'posts_torrent')
 
@@ -66,6 +43,21 @@ class Migration(SchemaMigration):
 
 
     models = {
+        u'posts.emailentry': {
+            'Meta': {'object_name': 'EmailEntry'},
+            'creation_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'post': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['posts.Post']", 'null': 'True'}),
+            'sent_at': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'status': ('django.db.models.fields.IntegerField', [], {}),
+            'text': ('django.db.models.fields.TextField', [], {'default': "u''"})
+        },
+        u'posts.emailsub': {
+            'Meta': {'object_name': 'EmailSub'},
+            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
         u'posts.post': {
             'Meta': {'object_name': 'Post'},
             'author': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['users.User']"}),
