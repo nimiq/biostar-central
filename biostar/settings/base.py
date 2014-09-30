@@ -133,6 +133,7 @@ ALLOWED_ATTRIBUTES = {
     'a': ['href', 'rel'],
     'img': ['src', 'alt', 'width', 'height'],
     'table': ['border', 'cellpadding', 'cellspacing'],
+
 }
 
 # Local time zone for this installation. Choices can be found here:
@@ -230,6 +231,9 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+# The user score that halves the chance.
+HALF_LIFE = 30.0
 
 LOGIN_REDIRECT_URL = "/"
 
@@ -391,6 +395,11 @@ GOOGLE_DOMAIN = ""
 
 # The site logo.
 SITE_LOGO = "biostar2.logo.png"
+
+# Digest title
+DAILY_DIGEST_TITLE = '[biostar daily digest] %s'
+WEEKLY_DIGEST_TITLE = '[biostar weekly digest] %s'
+
 
 # The default CSS file to load.
 SITE_STYLE_CSS = "biostar.style.less"

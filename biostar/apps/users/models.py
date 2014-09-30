@@ -14,6 +14,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.sites.models import Site
 from datetime import datetime, timedelta
 
+
 # HTML sanitization parameters.
 ALLOWED_TAGS = bleach.ALLOWED_TAGS + settings.ALLOWED_TAGS
 ALLOWED_STYLES = bleach.ALLOWED_STYLES + settings.ALLOWED_STYLES
@@ -226,6 +227,10 @@ class Profile(models.Model):
     # The tag set is built from the watch_tag string and is used to trigger actions
     # when a post that matches this tag is set
     tags = models.ManyToManyField(Tag, blank=True, )
+
+    # Subscription to daily and weekly digests.
+    daily_digest = models.BooleanField(default=False)
+    weekly_digest = models.BooleanField(default=True)
 
     def parse_tags(self):
         return util.split_tags(self.tag_val)
